@@ -1,6 +1,5 @@
 function Gameboard (){
-    let gameboard = [];
-    let 
+    let gameboard = [,,,,,,,,];
 }
 
 function createplayer (player,symbol){
