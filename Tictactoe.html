@@ -5,18 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="tictactoe.js" defer></script>
     <link rel="stylesheet" href="Tictactoe.css">
-    <title>Document</title>
+    <title>TicTacToe</title>
 </head>
 <body>
-    <dialog class="info" open>
-        <form>
-            <h2 for="player1">first player name:</h2>
-            <input type="text" name="player1" id="player1" placeholder="enter your name">
-            <h2 for="player2">second player name:</h2>
-            <input type="text" name="player2" id="player2" placeholder="enter your name">
-            <button type="submit">Play</button>
-        </form>
-    </dialog>
+    <h1>TicTacToe</h1>
     <div class="game-board">
         <div class="part"></div>
         <div class="part"></div>
@@ -28,5 +20,15 @@
         <div class="part"></div>
         <div class="part"></div>
     </div>
+    <div id="massage"></div>
+    <div id="result"></div>
+
+    <form>
+        <h2 for="player1">first player name:</h2>
+        <input type="text" name="player1" id="player1" placeholder="enter your name">
+        <h2 for="player2">second player name:</h2>
+        <input type="text" name="player2" id="player2" placeholder="enter your name">
+        <button class="startbtn">Play</button>
+    </form>
 </body>
 </html>
