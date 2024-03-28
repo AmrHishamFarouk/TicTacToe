@@ -1,7 +1,11 @@
 let Gameboard = (() => {
     let gameboard = ['','','','','','','','',''];
-
-    const display = () =>{
+    let winSituations = [
+        [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]
+    ];
+    
+    
+        const display = () =>{
         let blocks = document.querySelectorAll('.part');
         blocks.forEach((e,index) =>{
             e.textContent = gameboard[index];
@@ -18,17 +22,28 @@ let Gameboard = (() => {
                 if(currentplayer == 0){
                     gameboard[index] = 'X';
                     Gameboard.display();
-
                 }
                 else{
                     gameboard[index] = 'O';
                     Gameboard.display();
-
                 }
+                Game.nextTurn();
         }
     }
+    const clear = () =>{
+        gameboard = ['','','','','','','','',''];
+    }
 
-    return{display,upgrade};
+    const check =() =>{
+    //  winSituations = [  [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]   ];
+        let win = 2;
+        // win = 1 for player O  and win = 0 for player X
+        
+
+    }
+
+
+    return{display,upgrade,clear,check};
 })();
 
 
@@ -44,6 +59,7 @@ let Game =(() =>{
     let massage = document.querySelector('#massage');
     
     const start = () =>{
+        Gameboard.clear();
         players = [
             createplayer(document.getElementsByName('player1').value,'X'),
             createplayer(document.getElementsByName('player2').value,'O')
@@ -51,19 +67,22 @@ let Game =(() =>{
         currentplayer = 0;
         gameover = false;
         Gameboard.display();
-        massage.textContent = players[0].name;
+        massage.textContent = players[currentplayer].name;
     }
     
     const boxChoosed = (index) => {
         //update data
-        Gameboard.upgrade(index,currentplayer);
+        if(gameover == false){
+            Gameboard.upgrade(index,currentplayer);
+            gameover = Gameboard.check();
+        }
     }
 
     const nextTurn = () =>{
         currentplayer = currentplayer == 0 ? 1 : 0;
         massage.textContent = players[currentplayer].name;
-
     }
+    
     return{start,boxChoosed,nextTurn};
     
 })();
