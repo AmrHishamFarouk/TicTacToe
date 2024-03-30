@@ -3,6 +3,8 @@ let Gameboard = (() => {
     let winSituations = [
         [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]
     ];
+    let winX = 0;
+    let winO = 0;
     
     
         const display = () =>{
@@ -36,23 +38,12 @@ let Gameboard = (() => {
 
     const check =() =>{
     //  winSituations = [  [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]   ];
-        let winX = 0;
-        let winO = 0;
-
-        // win = 1 for player O  and win = 0 for player X
-        for(let j=0; j<8; j++){
-            winX = 0;
-            winO = 0;
-            for(let i = 0; i<3; i++){
-                if(gameboard[winSituations[j][i]] == 'X'){
-                    winX++ 
-                }
-                else if(gameboard[winSituations[j][i]] == 'O'){
-                    winO++ 
-                }
+        winSituations.forEach((e)=>{
+            let places[a,b,c] = e;
+            if(places[a]&&places[a]==places[b] && places[b]==places[c]){
+                return true;
             }
-            if(winX == 3 || winO == 3) return true;
-        }
+        })
 
     }
 
@@ -105,3 +96,29 @@ let startbtn = document.querySelector('.startbtn');
 startbtn.addEventListener('click',() =>{
     Game.start();
 })
+
+
+
+
+
+
+
+
+        // for(let j=0; j<8; j++){
+        //     winX = 0;
+        //     winO = 0;
+        //     for(let i = 0; i<3; i++){
+        //         if(gameboard[winSituations[j][i]] == 'X'){
+        //             winX++ 
+        //         }
+        //         else if(gameboard[winSituations[j][i]] == 'O'){
+        //             winO++ 
+        //         }
+        //     }
+        //     if(winX == 3 || winO == 3) return true;
+        //     else{
+        //         winX = 0;
+        //         winO = 0; 
+        //         return false;
+        //     }
+        // }
