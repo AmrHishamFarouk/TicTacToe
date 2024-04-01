@@ -76,7 +76,7 @@ let Game =(() =>{
         currentplayer = 0;
         gameover = false;
         Gameboard.display();
-        massage.textContent = players[currentplayer].name + ' turn';
+        massage.textContent = players[currentplayer].name + "s' turn";
     }
     
     const boxChoosed = (index) => {
@@ -92,7 +92,7 @@ let Game =(() =>{
 
     const nextTurn = () =>{
         currentplayer = currentplayer == 0 ? 1 : 0;
-        massage.textContent = players[currentplayer].name + ' turn';
+        massage.textContent = players[currentplayer].name + "s' turn";
     }
     
     return{start,boxChoosed,nextTurn};
